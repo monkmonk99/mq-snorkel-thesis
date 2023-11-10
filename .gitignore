@@ -1,0 +1,12 @@
+*.json
+videos/*
+*.pickle
+*.pkl
+*.pem
+__pycache__/*
+data/*
+results/*
+*/__pycache__/*
+config.json
+.env
+captions/*

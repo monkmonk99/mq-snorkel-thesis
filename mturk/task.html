@@ -1,0 +1,214 @@
+<!-- You must include this JavaScript file -->
+<script src="https://assets.crowd.aws/crowd-html-elements.js"></script>
+<style>
+  .q-group-1 {
+    margin-left: 20px;
+    border-left: 1px solid #707070;
+    padding-left: 5px;
+  }
+
+  .q-group-2 {
+    margin-left: 40px;
+    border-left: 1px solid #707070;
+    padding-left: 5px;
+    width: fit-content
+  }
+
+  .q-group-3 {
+    margin-left: 10%;
+    border-left: 1px solid #707070;
+    padding-left: 5px;
+    width: fit-content;
+  }
+
+  .q-group-4 {
+    margin-left: 10%;
+    border-left: 1px solid #707070;
+    padding-left: 5px;
+    width: fit-content;
+  }
+
+  .dimmed {
+    pointer-events: none;
+    position: relative;
+    user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+  }
+
+  .dimmed:after {
+    content: " ";
+    z-index: 10;
+    display: block;
+    position: absolute;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(170, 170, 170, 0.7);
+  }
+
+  .youtube-form {
+    width: 50%;
+  }
+
+  .youtube-data {
+    /*position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 200;*/
+    max-height: 50vh;
+  }
+
+  .youtube-player {
+    width: 70%;
+    height: fit-content;
+  }
+
+  .text-data {
+    text-align: right;
+    padding-right: 20px;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+</style>
+
+<!-- For the full list of available Crowd HTML Elements and their crowd-radio-button/output documentation,
+      please refer to https://docs.aws.amazon.com/sagemaker/latest/dg/sms-ui-template-reference.html -->
+
+<!-- You must include crowd-form so that your task submits answers to MTurk -->
+<div class="container">
+<div class="youtube-form">
+  <iframe
+  class="youtube-player"
+  src="https://www.youtube.com/embed/${video_id}&autoplay=1&cc_load_policy=1&modestbranding=1"
+  srcdoc="<style>*{padding:0;margin:0;overflow:hidden}html,body{height:100%}img,span{position:absolute;width:100%;top:0;bottom:0;margin:auto}span{height:1.5em;text-align:center;font:48px/1.5 sans-serif;color:white;text-shadow:0 0 0.5em black}</style><a href=https://www.youtube.com/embed/${video_id}?autoplay=1><img src=https://img.youtube.com/vi/${video_id}/hqdefault.jpg alt='${title}'><span>▶</span></a>"
+  frameborder="0"
+  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+  allowfullscreen
+  title="${title}"
+  ></iframe>
+  <crowd-form answer-format="flatten-objects">
+
+    <crowd-instructions link-text="View instructions" link-type="button">
+      <short-summary>
+        <p>This task is about assessing whether the given YouTube video contains phone scambaiting content.<br/> Scambaiting is the act of interacting with scammers to waste their time, and specifically for this task we are interested in scambaiting performed over phone calls.
+          <br/>You will be asked whether a given YouTube video is mostly scambaiting conversations with real phone scammers, partially such conversations or does not contain conversations with phone scammers at all.
+          <ul><li>Pay attention to the title, description and thumbnail of the video. </li><li>Watch and listen to 4 or 5 points in the video and determine if these points are scambaiting calls or not.</li><li>Using an ad-blocker is recommended for this task. <a href="https://ublockorigin.com/">uBlock Origin</a> is an effective ad blocker for YouTube videos.</li></ul></p>
+      </short-summary>
+
+      <detailed-instructions>
+        <h3>What is scambaiting?</h3>
+        <p>Scambaiting is the act of interacting with scammers with the intention to decieve and waste the time of the
+          scammers. In this context the scambaiting happens over a phone call. Check out the positive example in the examples section for more reference.</p>
+        <h3>Step-by-step Instructions?</h3>
+        <ol>
+          <li>Pay attention to the title and the desciption of the video. This can often tell you if a video has anything to do with scamming and scambaiting or not.</li>
+          <li>As you complete tasks, the channel should also begin to provide hints on whether a video is about scambaiting. Some creators such as Kitboga and Rinoa Poison dedicate their channels to scambaiting. Note: be aware that sometimes a channel may have videos that differ from their usual videos. Channel name should be a guide, not a definitive answer.</li>
+          <li>
+            Skim through the video, to 4 or 5 points, looking and listening for whether a scambaiting phone call is occuring. This, combined with the previous steps should provide a more definitive answer to the task. If 3-5 of the points you skip to contain scambaiting, then select "Most of the video". If 1-2 of the points you skip to contain scambaiting, then select "Some of the video". If none of the points you skip to contain scambaiting, then select "None of the video".
+          </li>
+        </ol>
+        <p>Note: Unfortunately, a limitation of Mechanical Turk is that it is difficult/impossible to display emojis in the manner we desire. We have replaced all emojis with things like :smile:, :cat:, :radiation:</p>
+        <h3>Examples</h3>
+        <ul>
+          <li>
+            <h4>Mostly Scambaiting</h4>
+            <iframe loading="lazy" width="250" height="125" src="https://www.youtube.com/embed/qwkmHofCOhY">
+            </iframe><iframe loading="lazy" width="250" height="125" src="https://www.youtube.com/embed/pRK_5ipAziU">
+            </iframe><iframe loading="lazy" width="250" height="125" src="https://www.youtube.com/embed/-AtuJyfB5rY">
+            </iframe>
+          </li>
+          <li>
+            <h4>Some Scambaiting</h4>
+            <iframe loading="lazy" width="250" height="125" style="display:inline-block" src="https://www.youtube.com/embed/Z3fTXZcU9cs">
+            </iframe><iframe loading="lazy" width="250" height="125" src="https://www.youtube.com/embed/U9s5tCBHCas">
+            </iframe>
+          </li>
+          <li>
+            <h4>No Scambaiting</h4>
+            <iframe loading="lazy" width="250" height="125" src="https://www.youtube.com/embed/5YIJXSWX_PE">
+            </iframe><iframe loading="lazy" width="250" height="125" src="https://www.youtube.com/embed/Ca9Nw-YsX_k">
+            </iframe>
+          </li>
+        </ul>
+      </detailed-instructions>
+      <!--
+      <positive-example>
+        <iframe loading="lazy" width="250" height="125" src="https://www.youtube.com/embed/qwkmHofCOhY">
+        </iframe>
+        <p>This video is <b>mostly</b> scambaiting.</p>
+      </positive-example>
+      <positive-example>
+        <iframe loading="lazy" width="250" height="125" src="https://www.youtube.com/embed/pRK_5ipAziU">
+        </iframe>
+        <p>This video is <b>mostly</b> scambaiting.</p>
+      </positive-example>
+      <positive-example>
+        <iframe loading="lazy" width="250" height="125" src="https://www.youtube.com/embed/-AtuJyfB5rY">
+        </iframe>
+        <p>This video is <b>mostly</b> scambaiting.</p>
+      </positive-example>
+      <negative-example>
+        <iframe loading="lazy" width="250" height="125" style="display:inline-block" src="https://www.youtube.com/embed/Z3fTXZcU9cs">
+        </iframe>
+        <p>This video is about scambaiting but only contains <b>some</b> scambaiting.</p>
+      </negative-example>
+      <negative-example>
+        <iframe loading="lazy" width="250" height="125" src="https://www.youtube.com/embed/U9s5tCBHCas">
+        </iframe>
+        <p>This video is about scambaiting but only contains <b>some</b> scambaiting.</p>
+      </negative-example>
+      <negative-example>
+        <iframe loading="lazy" width="250" height="125" src="https://www.youtube.com/embed/5YIJXSWX_PE">
+        </iframe>
+        <p>This video is about scams but has <b>no</b> scambaiting in it.</p>
+      </negative-example>
+      <negative-example>
+        <iframe loading="lazy" width="250" height="125" src="https://www.youtube.com/embed/Ca9Nw-YsX_k">
+        </iframe>
+        <p>This video is about scams but has <b>no</b> scambaiting in it.</p>
+      </negative-example>-->
+    </crowd-instructions>
+
+      <div>
+        <p>How much of this video is a scambaiting call?</p>
+        <div>
+          <input type="radio" id="most" name="is-a-call" value="most" required>
+          <label for="most">Most of the video</label>
+        </div>
+        <div>
+          <input type="radio" id="some" name="is-a-call" value="some">
+          <label for="some">Some of the video</label>
+        </div>
+        <div>
+          <input type="radio" id="none" name="is-a-call" value="none">
+          <label for="none">None of the video</label>
+        </div>
+      </div>
+      <br/>
+      <div>
+        <p>Optionally, are there any interesting/exceptional aspects to this video?</p>
+      <crowd-text-area name="other" placeholder="This video seemed cruel/fake/etc" max-rows="1"></crowd-text-area>
+      </div>
+      <crowd-button form-action="submit" variant="primary" data-testid="crowd-submit">Submit</crowd-button>
+  </crowd-form>
+</div>
+
+<div class="youtube-data">
+  <div class="text-data">
+    <h2>Video Title: ${title}</h2>
+    <h3>Channel: ${channel_name}</h3>
+    <p>
+      Video Description: ${desc}
+    </p>
+    <a href="https://www.youtube.com/watch?v=${video_id}" target="_blank">Link to video</a>
+  </div>
+</div>
+</div>

@@ -1,0 +1,34 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+pandas = "*"
+ipykernel = "*"
+nltk = "*"
+pymongo = "*"
+youtube-dl = "*"
+yt-dlp = "*"
+google-api-python-client = "*"
+google-auth-oauthlib = "*"
+google-auth-httplib2 = "*"
+rev-ai = "*"
+matplotlib = "*"
+anyascii = "*"
+numpy = "*"
+snorkel = "*"
+pafy = "*"
+flyingsquid = "*"
+pgmpy = "*"
+ipywidgets = "*"
+webvtt-py = "*"
+pytube = "*"
+python-dotenv = "*"
+seaborn = "*"
+pydub = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.10"
